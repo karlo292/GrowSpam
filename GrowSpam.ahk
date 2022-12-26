@@ -1,30 +1,29 @@
 ﻿#Requires AutoHotkey v2.0
 
 
-MyGui := Gui()
-MyGui.Add("Text",, "Enter the message you want to spam:")
-MyEdit := MyGui.Add("Edit", "r1 vMyEdit w200")
-MyGui.Add("Text",, 'Press "CTRL + Y" to paste text')
+Main(){
+	MainGui := Gui()
+	MainGui.SetFont("s10")
+	MainGui.Add("Text","x16 y13 w227 h23 +0x200", "Enter the message you want to spam:")
+	TextEdit := MainGui.Add("Edit", "x16 y41 w294 h90 ")
 
-global text := "Type something"
+	global text := ""
 
-Confirm()
-{
-	return text := MyEdit.Value
+	MyBtn := MainGui.Add("Button", "x13 y141 w89 h30", "Save Text")
+	MyBtn.OnEvent("Click", (*) => text := TextEdit.Value) ; Error here
+	;CheckBoxEdit := MainGui.Add("CheckBox", "x110 y140 w73 h33 CheckBox", "Auto Enter")
+	MainGui.Show("W352 H180")
 }
 
-
-;MyBtn := MyGui.Add("Button", "Default w80", "SAVE TEXT")
-;MyBtn.OnEvent("Click", Confirm())
-
-
-MyGui.Show
-
+Main()
 
 ^y::
 {
-	text := MyEdit.Value 
-	Send "{Enter}"
+	;if (CheckBoxEdit.Value := 1)
+	;{
+	;	Send "{Enter}"
+	;}
+	
 	Send text
 }
 
