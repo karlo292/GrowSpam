@@ -1,4 +1,5 @@
 # GrowSpam
+Script for spamming in growtopia
 
 How to compile:
 1. Get AutoHotkey
